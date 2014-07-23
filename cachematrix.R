@@ -1,7 +1,8 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
+## This function opens the matrix. Once you see inside, the world will never
+## look the same again.
 
 makeCacheMatrix <- function(x = matrix()) {
 
