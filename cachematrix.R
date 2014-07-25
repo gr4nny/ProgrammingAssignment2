@@ -10,15 +10,18 @@
 ## it will store it and its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
-  if(!is.matrix(x)) {                   ## check to see if x is a matrix
+  ## check to see if x is a matrix
+  if(!is.matrix(x)) {                   
     stop("x is not a matrix")
   }
-  if(!all(x == cachedMatrix)) {         ## check to see if x is the same as the cachedMatrix
+  ## check to see if x is the same as the cachedMatrix
+  if(dim(x) == dim(cachedMatrix) && all(x == cachedMatrix)) {         
+    print(x)
+    ## print("inverseCachedMatrix")
+    ## return(x)
+  } else {
     cachedMatrix<-x
     inverseCachedMatrix<-cacheSolve(cachedMatrix)
-  } else {
-    print("x")
-    print("inverseCachedMatrix")
   }
 
 }
@@ -28,7 +31,11 @@ makeCacheMatrix <- function(x = matrix()) {
 ## returning the variable inverseCachedMatrix
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  ## check to see if x is a matrix
+  if(!is.matrix(x)) {                   
+    stop("x is not a matrix")
+  }
+  ## Return a matrix that is the inverse of 'x'
   ## check to see if the matrix is invertible
   
   ## invert the matrix
