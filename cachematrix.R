@@ -12,7 +12,7 @@ makeCacheMatrix <- function(x = matrix()) {
           inv <<- NULL
   }
   get <- function() x ## return the original matrix
-  setinv <- function(solve) inv <<- solve ## calculate the inverse matrix
+  setinv <- function() inv <<- solve(x) ## calculate the inverse matrix
   getinv <- function() inv ## return the inverse matrix
   list(set = set, get = get, setinv = setinv,
        getinv = getinv)
@@ -29,8 +29,7 @@ cacheSolve <- function(x, ...) {
     return(inv)
   }
   data <- x$get()
-  inv <- mean(data, ...)
-  x$setinv(inv)
-  inv
-  
+  x$setinv()
+  inv <- x$getinv()
+  inv  
 }
